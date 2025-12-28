@@ -21,12 +21,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.gaganbelgur.model.Project
 import com.gaganbelgur.ui.components.PaginatedListScaffold
+import com.gaganbelgur.ui.components.TagsFilterChipGroup
 import com.gaganbelgur.viewmodels.ProjectViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,6 +57,12 @@ fun ProjectScreen(projectViewModel: ProjectViewModel) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
+            val tags = projectViewModel.getProjectTags()
+
+            TagsFilterChipGroup(tags = tags, selectedTag = emptySet(), onTagToggle = {})
+
+            Spacer(modifier = Modifier.height(8.dp))
+
             PaginatedListScaffold(
                 itemsFlow = itemsFlow,
                 modifier = Modifier
@@ -70,8 +78,7 @@ fun ProjectScreen(projectViewModel: ProjectViewModel) {
 
 @Composable
 fun ProjectCard(project: Project) {
-    Card(
-        modifier = Modifier
+    Card(modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 8.dp, vertical = 4.dp),
         shape = RoundedCornerShape(4.dp),
@@ -95,8 +102,6 @@ fun ProjectCard(project: Project) {
                             onClick = { },
                             label = { Text(tags.displayName) },
                             modifier = Modifier.padding(4.dp),
-                            leadingIcon = {
-                            },
                             colors = FilterChipDefaults.filterChipColors(
                                 selectedContainerColor = Color(0xFF1E88E5),
                                 selectedLabelColor = Color.White,

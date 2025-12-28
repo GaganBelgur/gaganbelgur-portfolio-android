@@ -11,6 +11,8 @@ class ProjectViewModel @Inject constructor(
 ) : ViewModel(){
 
     fun getAllProjects() = projectUseCase.getAllProjectUseCase()
+
+    fun getProjectTags() = projectUseCase.getProjectTagsUseCase()
 }
 
 

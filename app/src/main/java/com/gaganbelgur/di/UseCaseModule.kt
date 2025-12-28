@@ -2,6 +2,7 @@ package com.gaganbelgur.di
 
 import com.gaganbelgur.domain.repository.ProjectRepository
 import com.gaganbelgur.domain.usecases.GetAllProjectUseCase
+import com.gaganbelgur.domain.usecases.GetProjectTagsUseCase
 import com.gaganbelgur.domain.usecases.ProjectUseCase
 import dagger.Module
 import dagger.Provides
@@ -15,7 +16,8 @@ object UseCaseModule {
     @Provides
     fun provideProjectUseCases(repository: ProjectRepository): ProjectUseCase {
         return ProjectUseCase(
-            getAllProjectUseCase = GetAllProjectUseCase(repository)
+            getAllProjectUseCase = GetAllProjectUseCase(repository),
+            getProjectTagsUseCase = GetProjectTagsUseCase(repository)
         )
     }
 }
