@@ -2,6 +2,7 @@ package com.gaganbelgur.di
 
 import com.gaganbelgur.data.repository.ProjectRepositoryImpl
 import com.gaganbelgur.domain.repository.ProjectRepository
+import com.gaganbelgur.utils.paging.PagingHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +15,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideProjectRepository(): ProjectRepository = ProjectRepositoryImpl()
+    fun provideProjectRepository(pagingHelper: PagingHelper): ProjectRepository = ProjectRepositoryImpl(pagingHelper)
 
 }

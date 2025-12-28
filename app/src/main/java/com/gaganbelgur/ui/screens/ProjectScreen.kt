@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,12 +21,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.gaganbelgur.model.Project
+import com.gaganbelgur.ui.components.PaginatedListScaffold
 import com.gaganbelgur.viewmodels.ProjectViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,14 +51,19 @@ fun ProjectScreen(projectViewModel: ProjectViewModel) {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            val itemsFlow = projectViewModel.getAllProjects()
+
             Spacer(modifier = Modifier.height(8.dp))
-            val projects = projectViewModel.projectList.collectAsState().value
-            LazyColumn {
-                items(projects) { project ->
+
+            PaginatedListScaffold(
+                itemsFlow = itemsFlow,
+                modifier = Modifier
+                    .fillMaxSize(),
+                isSwipeRefreshEnabled = false,
+                itemContent = { project ->
                     ProjectCard(project = project)
-                    Spacer(modifier = Modifier.height(8.dp))
                 }
-            }
+            )
         }
     }
 }
@@ -69,7 +73,7 @@ fun ProjectCard(project: Project) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp),
+            .padding(horizontal = 8.dp, vertical = 4.dp),
         shape = RoundedCornerShape(4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)

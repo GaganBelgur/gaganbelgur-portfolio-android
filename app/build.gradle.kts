@@ -67,4 +67,9 @@ dependencies {
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
     implementation(libs.navigation.compose)
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.compose)
+    implementation(libs.material)
+    implementation(libs.androidx.material3)
+    implementation(libs.material.icons.extended)
 }
