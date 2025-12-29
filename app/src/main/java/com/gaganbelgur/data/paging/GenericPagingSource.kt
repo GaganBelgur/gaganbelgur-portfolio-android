@@ -1,4 +1,4 @@
-package com.startars.expensetracker.data.paging
+package com.gaganbelgur.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

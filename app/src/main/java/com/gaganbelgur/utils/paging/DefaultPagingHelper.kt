@@ -3,7 +3,7 @@ package com.gaganbelgur.utils.paging
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.startars.expensetracker.data.paging.GenericPagingSource
+import com.gaganbelgur.data.paging.GenericPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

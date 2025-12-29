@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 interface PagingHelper {
 
     fun <T : Any> createPagingFlow(
-        pageSize: Int = 10,
-        enablePlaceholders: Boolean = false,
+        pageSize: Int = 20,
+        enablePlaceholders: Boolean = true,
         loadData: suspend (offset: Int, limit: Int) -> List<T>
     ): Flow<PagingData<T>>
 
