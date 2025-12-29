@@ -16,7 +16,7 @@ import com.gaganbelgur.domain.model.CompanyTags
 @Composable
 fun TagsFilterChipGroup(
     tags: List<CompanyTags>,
-    selectedTag: Set<CompanyTags>,
+    selectedTag: List<CompanyTags>,
     onTagToggle: (CompanyTags) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -33,8 +33,10 @@ fun TagsFilterChipGroup(
                     modifier = Modifier.padding(4.dp),
 
                     colors = FilterChipDefaults.filterChipColors(
-                        containerColor = Color(0xFF1E88E5),
-                        labelColor = Color.White,
+                        containerColor = Color.White,
+                        labelColor = Color(0xFF1E88E5),
+                        selectedContainerColor = Color(0xFF1E88E5),
+                        selectedLabelColor = Color.White
                     )
                 )
             }

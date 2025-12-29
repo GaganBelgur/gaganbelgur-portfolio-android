@@ -2,5 +2,6 @@ package com.gaganbelgur.domain.usecases
 
 data class ProjectUseCase(
     val getAllProjectUseCase: GetAllProjectUseCase,
-    val getProjectTagsUseCase: GetProjectTagsUseCase
+    val getProjectTagsUseCase: GetProjectTagsUseCase,
+    val filterProjectBasedOnTagsUseCase: FilterProjectBasedOnTagsUseCase
 )

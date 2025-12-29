@@ -53,13 +53,18 @@ fun ProjectScreen(projectViewModel: ProjectViewModel) {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val itemsFlow = projectViewModel.getAllProjects()
+            val itemsFlow = projectViewModel.projects
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
-            val tags = projectViewModel.getProjectTags()
+            val tags = projectViewModel.companyTags.collectAsState().value
+            val selectedCompanyTags = projectViewModel.selectedCompanyTags.collectAsState().value
 
-            TagsFilterChipGroup(tags = tags, selectedTag = emptySet(), onTagToggle = {})
+            TagsFilterChipGroup(
+                tags = tags,
+                selectedTag = selectedCompanyTags,
+                onTagToggle = { projectViewModel.updateSelectedTags(it) }
+            )
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -78,13 +83,14 @@ fun ProjectScreen(projectViewModel: ProjectViewModel) {
 
 @Composable
 fun ProjectCard(project: Project) {
-    Card(modifier = Modifier
+    Card(
+        modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 8.dp, vertical = 4.dp),
         shape = RoundedCornerShape(4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
-    )  {
+    ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = project.name, style = MaterialTheme.typography.headlineSmall)
 

@@ -68,7 +68,7 @@ val molekuleB2B = Project(
       B2B app for organizations to group and manage multiple purifiers. control by type (speed, mode, filter status) and reorder devices within groups.
       """.trimIndent(),
     tags = listOf(TechTags.IOT, TechTags.B2B),
-    company = CompanyTags.CITI
+    company = CompanyTags.MOLEKULE
 )
 
 val molekuleConsumer = Project(
