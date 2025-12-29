@@ -21,7 +21,7 @@ fun TagsFilterChipGroup(
     modifier: Modifier = Modifier,
 ) {
     FlowRow(
-        modifier = modifier.padding(8.dp),
+        modifier = modifier.padding(0.dp),
         maxLines = 1
     ) {
         LazyRow {

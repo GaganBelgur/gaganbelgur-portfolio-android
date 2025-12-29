@@ -15,17 +15,14 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.gaganbelgur.ui.navigation.BottomNavItem
+import com.gaganbelgur.ui.navigation.TabItems
 import com.gaganbelgur.ui.navigation.PortfolioGraph
 
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
 
-    val items = listOf(
-        BottomNavItem.About,
-        BottomNavItem.Projects
-    )
+    val items = TabItems.ALL
 
     Scaffold(
         bottomBar = {

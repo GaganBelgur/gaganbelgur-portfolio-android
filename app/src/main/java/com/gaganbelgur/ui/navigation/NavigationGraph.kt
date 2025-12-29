@@ -18,7 +18,7 @@ fun PortfolioGraph(
 
     NavHost(
         navController = navController,
-        startDestination = BottomNavItem.About.route,
+        startDestination = TabItems.About.route,
         modifier = modifier
     ) {
         composable(route = Screen.About.route) {

@@ -3,6 +3,7 @@ package com.gaganbelgur.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.gaganbelgur.domain.model.CompanyTags
 import com.gaganbelgur.domain.usecases.ProjectUseCase
 import com.gaganbelgur.model.Project
@@ -31,7 +32,6 @@ class ProjectViewModel @Inject constructor(
 
     val companyTags: StateFlow<List<CompanyTags>> = _companyTags
 
-
     init {
         getAllProjects()
         getProjectTags()
@@ -39,7 +39,9 @@ class ProjectViewModel @Inject constructor(
 
     private fun getAllProjects() {
         viewModelScope.launch {
-            projectUseCase.getAllProjectUseCase().collectLatest {
+            projectUseCase.getAllProjectUseCase()
+                .cachedIn(viewModelScope)
+                .collectLatest {
                 _projects.value = it
             }
         }

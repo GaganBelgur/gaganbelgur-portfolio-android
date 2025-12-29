@@ -16,10 +16,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -29,57 +26,43 @@ import androidx.compose.ui.unit.dp
 import com.gaganbelgur.model.Project
 import com.gaganbelgur.ui.components.PaginatedListScaffold
 import com.gaganbelgur.ui.components.TagsFilterChipGroup
-import com.gaganbelgur.ui.components.getTopBar
 import com.gaganbelgur.viewmodels.ProjectViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProjectScreen(projectViewModel: ProjectViewModel) {
-    Scaffold(
-        topBar = {
-            getTopBar("Projects")
-        }
-    ) { padding ->
-        Column(
-            modifier = Modifier
-                .padding(padding)
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            val itemsFlow = projectViewModel.projects
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        val itemsFlow = projectViewModel.projects
 
-            Spacer(modifier = Modifier.height(4.dp))
+        val tags = projectViewModel.companyTags.collectAsState().value
+        val selectedCompanyTags = projectViewModel.selectedCompanyTags.collectAsState().value
 
-            val tags = projectViewModel.companyTags.collectAsState().value
-            val selectedCompanyTags = projectViewModel.selectedCompanyTags.collectAsState().value
+        TagsFilterChipGroup(
+            tags = tags,
+            selectedTag = selectedCompanyTags,
+            onTagToggle = { projectViewModel.updateSelectedTags(it) }
+        )
 
-            TagsFilterChipGroup(
-                tags = tags,
-                selectedTag = selectedCompanyTags,
-                onTagToggle = { projectViewModel.updateSelectedTags(it) }
-            )
+        Spacer(modifier = Modifier.height(8.dp))
 
-            Spacer(modifier = Modifier.height(8.dp))
-
-            PaginatedListScaffold(
-                itemsFlow = itemsFlow,
-                modifier = Modifier
-                    .fillMaxSize(),
-                isSwipeRefreshEnabled = false,
-                itemContent = { project ->
-                    ProjectCard(project = project)
-                }
-            )
-        }
+        PaginatedListScaffold(
+            itemsFlow = itemsFlow,
+            modifier = Modifier.fillMaxSize(),
+            isSwipeRefreshEnabled = false,
+            itemContent = { project ->
+                ProjectCard(project = project)
+            }
+        )
     }
 }
 
 @Composable
 fun ProjectCard(project: Project) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 4.dp),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
         shape = RoundedCornerShape(4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
