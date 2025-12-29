@@ -17,6 +17,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.gaganbelgur.ui.navigation.TabItems
 import com.gaganbelgur.ui.navigation.PortfolioGraph
+import com.gaganbelgur.ui.theme.ThemeBlue
+import com.gaganbelgur.ui.theme.ThemeOrange
 
 @Composable
 fun MainScreen() {
@@ -26,7 +28,7 @@ fun MainScreen() {
 
     Scaffold(
         bottomBar = {
-            NavigationBar(containerColor = Color(0xFF1E88E5), contentColor = Color.White) {
+            NavigationBar(containerColor = ThemeBlue, contentColor = Color.White) {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
 
@@ -51,8 +53,8 @@ fun MainScreen() {
                             }
                         },
                         colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor =  Color(0xFFFB8C00),
-                            selectedTextColor =  Color(0xFFFB8C00),
+                            selectedIconColor =  ThemeOrange,
+                            selectedTextColor =  ThemeOrange,
                             unselectedIconColor = Color.White,
                             unselectedTextColor = Color.White,
                             indicatorColor = Color.Transparent

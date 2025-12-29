@@ -26,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import com.gaganbelgur.model.Project
 import com.gaganbelgur.ui.components.PaginatedListScaffold
 import com.gaganbelgur.ui.components.TagsFilterChipGroup
+import com.gaganbelgur.ui.theme.ThemeBlue
+import com.gaganbelgur.ui.theme.ThemeOrange
 import com.gaganbelgur.viewmodels.ProjectViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -85,7 +87,7 @@ fun ProjectCard(project: Project) {
                             label = { Text(tags.displayName) },
                             modifier = Modifier.padding(4.dp),
                             colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = Color(0xFF1E88E5),
+                                selectedContainerColor = ThemeBlue,
                                 selectedLabelColor = Color.White,
                             )
                         )
@@ -101,7 +103,7 @@ fun ProjectCard(project: Project) {
                         leadingIcon = {
                         },
                         colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = Color(0xFFFB8C00),
+                            selectedContainerColor = ThemeOrange,
                             selectedLabelColor = Color.White,
                         )
                     )

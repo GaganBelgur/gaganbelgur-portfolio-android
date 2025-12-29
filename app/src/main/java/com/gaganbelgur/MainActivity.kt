@@ -25,6 +25,7 @@ import com.gaganbelgur.ui.screens.ScrollableTabScreen
 import com.gaganbelgur.ui.theme.DarkColorScheme
 import com.gaganbelgur.ui.theme.GaganBelgurPortfolioAppTheme
 import com.gaganbelgur.ui.theme.LightColorScheme
+import com.gaganbelgur.ui.theme.ThemeBlue
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val isDarkThemeEnabled = false
 
-            val systemBarColor = if (isDarkThemeEnabled) Color.Black else Color(0xFF1E88E5)
+            val systemBarColor = if (isDarkThemeEnabled) Color.Black else ThemeBlue
             val colorScheme = if (isDarkThemeEnabled) DarkColorScheme else LightColorScheme
 
             // Apply system bar styles based on your theme

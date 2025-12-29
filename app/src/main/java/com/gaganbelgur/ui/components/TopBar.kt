@@ -10,13 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import com.gaganbelgur.ui.theme.ThemeBlue
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun getTopBar(titleText: String) {
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF1E88E5),
+            containerColor = ThemeBlue,
             titleContentColor = Color.White,
             navigationIconContentColor = MaterialTheme.colorScheme.primary,
             actionIconContentColor = MaterialTheme.colorScheme.primary

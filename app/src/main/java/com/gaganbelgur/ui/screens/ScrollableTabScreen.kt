@@ -24,6 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.gaganbelgur.ui.components.getTopBar
 import com.gaganbelgur.ui.navigation.TabItems
+import com.gaganbelgur.ui.theme.ThemeBlue
+import com.gaganbelgur.ui.theme.ThemeOrange
 import com.gaganbelgur.viewmodels.ProjectViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -48,13 +50,13 @@ fun ScrollableTabScreen() {
             SecondaryScrollableTabRow(
                 selectedTabIndex = selectedTabIndex,
                 modifier = Modifier.fillMaxWidth(),
-                containerColor = Color(0xFF1E88E5),
+                containerColor = ThemeBlue,
                 contentColor = Color.White,
                 edgePadding = 0.dp,
                 indicator = {
                     TabRowDefaults.SecondaryIndicator(
                         modifier = Modifier.tabIndicatorOffset(selectedTabIndex),
-                        color = Color(0xFFFB8C00)
+                        color = ThemeOrange
                     )
                 }
             ) {
@@ -70,7 +72,7 @@ fun ScrollableTabScreen() {
                                 fontWeight = FontWeight.Bold,
                             )
                         },
-                        selectedContentColor = Color(0xFFFB8C00), // Orange for selected
+                        selectedContentColor = ThemeOrange,
                         unselectedContentColor = Color.White
                     )
                 }
