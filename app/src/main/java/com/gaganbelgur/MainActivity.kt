@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.gaganbelgur.ui.navigation.PortfolioGraph
+import com.gaganbelgur.ui.screens.MainScreen
 import com.gaganbelgur.ui.theme.DarkColorScheme
 import com.gaganbelgur.ui.theme.GaganBelgurPortfolioAppTheme
 import com.gaganbelgur.ui.theme.LightColorScheme
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val isDarkThemeEnabled = false
 
-            val systemBarColor = if (isDarkThemeEnabled) Color.Black else Color.White
+            val systemBarColor = if (isDarkThemeEnabled) Color.Black else Color(0xFF1E88E5)
             val colorScheme = if (isDarkThemeEnabled) DarkColorScheme else LightColorScheme
 
             // Apply system bar styles based on your theme
@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
                 color = colorScheme.background
             ) {
                 GaganBelgurPortfolioAppTheme(darkTheme = isDarkThemeEnabled) {
-                    PortfolioGraph()
+                    MainScreen()
                 }
             }
         }

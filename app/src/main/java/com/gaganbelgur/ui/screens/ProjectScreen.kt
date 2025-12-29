@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.gaganbelgur.model.Project
 import com.gaganbelgur.ui.components.PaginatedListScaffold
 import com.gaganbelgur.ui.components.TagsFilterChipGroup
+import com.gaganbelgur.ui.components.getTopBar
 import com.gaganbelgur.viewmodels.ProjectViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,15 +37,7 @@ import com.gaganbelgur.viewmodels.ProjectViewModel
 fun ProjectScreen(projectViewModel: ProjectViewModel) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.onPrimary,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.primary,
-                    actionIconContentColor = MaterialTheme.colorScheme.primary
-                ),
-                title = { Text("Projects") }
-            )
+            getTopBar("Projects")
         }
     ) { padding ->
         Column(
