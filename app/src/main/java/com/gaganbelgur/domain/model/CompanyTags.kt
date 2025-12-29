@@ -17,6 +17,4 @@ sealed class CompanyTags(
     object NAVRITI : CompanyTags("navriti", "Navriti")
 
     object HOBBY : CompanyTags("hobby", "Hobby")
-
-    object ALL: CompanyTags("all", "All")
 }

@@ -10,15 +10,13 @@ class GetProjectTagsUseCase @Inject constructor(private val projectRepository: P
 
     operator fun invoke(): Flow<List<CompanyTags>> {
         return flow {
-            var tagsList = projectRepository.getAllTags()
+            val tagsList = projectRepository.getAllTags()
 
             if (tagsList.isEmpty()) {
                 emit(emptyList())
             }
 
-            tagsList = tagsList.toMutableList()
-            tagsList.add(CompanyTags.ALL)
-            emit(tagsList.toList())
+            emit(tagsList)
         }
     }
 }
